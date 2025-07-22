@@ -2,6 +2,7 @@
     "files.associations": {
         "*.dbclient-js": "javascript",
         "5874.C": "cpp",
-        "random": "c"
+        "random": "c",
+        "stdlib.h": "c"
     }
 }
