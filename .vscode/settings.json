@@ -3,6 +3,7 @@
         "*.dbclient-js": "javascript",
         "5874.C": "cpp",
         "random": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "iterator": "c"
     }
 }

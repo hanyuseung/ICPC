@@ -25,7 +25,7 @@ void hAdjust(int vertex, int newDist);
 void gInit();
 void gInsert();
 void gFree();
-int dijkstra(int s, int d);
+int dijkstra();
 
 /* global */
 heapNode* heap;
@@ -34,7 +34,7 @@ nodePtr* graph;
 int* distance;
 int* visited;
 int numVert, numEdge;
-int vertA, vertB;
+int source, dest;
 
 
 void hInsert(heapNode new ,int* size){
@@ -123,18 +123,14 @@ void gInit(){
     for (int i = 0; i < numEdge; i++)
         gInsert();
 
-    scanf("%d %d",&vertA, &vertB);
+    scanf("%d %d",&source, &dest);
 }
 
-int dijkstra(int source, int dest){
+int dijkstra(){
     /*  1. source와 그 인접 distance 갱신
         2. dest가 visited 될때 까지 
             heap에서 pop - visited 하고 distance 갱신
     */
-    for (int i = 0; i < numVert+1; i++){
-        distance[i] = INF;
-    }
-
     int size = 0;
     distance[source] = 0;
     heapNode start = {source, 0};
@@ -168,46 +164,8 @@ int dijkstra(int source, int dest){
 int main(void)
 {
     gInit();
-    // 1 - a - b - N, 1 - b - a - N
-    int arr1[3]; int arr2[3];
-    arr1[0] = dijkstra(1, vertA);
-    arr2[0] = dijkstra(1, vertB);
-    arr1[1] = arr2[1] = dijkstra(vertA, vertB);
-    arr1[2] = dijkstra(vertB, numVert);
-    arr2[2] = dijkstra(vertA, numVert);
-    int c1 = 0,c2 = 0;
-    for(int i = 0; i < 3; i++){
-        printf("%d ",arr1[i]);
-    }
-    printf("\n");
-    for(int i = 0; i < 3; i++){
-        printf("%d ",arr2[i]);
-    }
-    for(int i = 0; i < 3; i++){
-        if(arr1[i] < INF) c1 += arr1[i];
-        else{ 
-            c1 = -1; break; 
-        }
-    }
-    for(int i = 0; i < 3; i++){
-        if(arr2[i] != INF) c2 += arr1[i];
-        else{ 
-            c2 = -1; break; 
-        }
-    }
-
-    if(c1 == -1){
-        if(c2 == -1){
-            printf("-1\n");
-        } else {
-            printf("%d\n",c2);
-        }
-    } else{
-        if(c2 == -1){
-            printf("%d\n",c1);
-        } else {
-            c1 < c2 ? printf("%d\n",c1) : printf("%d\n",c2);
-        }
-    }
+    int dis = dijkstra();
+    if(dis != INF) printf("%d\n",dis);
+    else printf("-1\n");
     return 0;
 }
