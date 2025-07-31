@@ -4,6 +4,7 @@
         "5874.C": "cpp",
         "random": "c",
         "stdlib.h": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "iostream": "cpp"
     }
 }

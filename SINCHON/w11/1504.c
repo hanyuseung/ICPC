@@ -27,7 +27,7 @@ void gInsert();
 void gFree();
 int dijkstra(int s, int d);
 
-/* global */
+/* global */ 
 heapNode* heap;
 int* hPos;
 nodePtr* graph;
