@@ -5,6 +5,7 @@
         "random": "c",
         "stdlib.h": "c",
         "iterator": "c",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iosfwd": "cpp"
     }
 }

@@ -1,4 +1,4 @@
-// Longest increasing sequence
+// Longest Increasing Subsequence
 
 
 /******* dp ************
@@ -30,14 +30,14 @@ void LIS::getInput(){
     {
         cin >> array[i];
         prevIdx[i] = -1;
+        dpArr[i] = 1;// init by 1... 만약 단조 감소 수열이면 어디든 1이자너
     }
 }
 
 void LIS::dp(){
     int i, j;
     int max = 1;
-    
-    dpArr[0] = 1;
+
     for (i = 0; i < n; i++){
         for(j = 0; j < i; j++){
             if(array[i] > array[j] && dpArr[i] < dpArr[j] + 1){
@@ -47,11 +47,20 @@ void LIS::dp(){
                     max = dpArr[i];
                     endIdx = i;
                 }
-                // how to get path?
-
             }
         }
     }
+    
+
+    /*
+    counter example
+    13
+    3 4 5 6 2 3 1 7 4 3 5 6 7
+
+    34567로 출력. 원인은?
+     -> dp 테이블을 initialize 를 안했으니까... 바보임?
+    */
+
     cout << max << "\n";
 }
 
